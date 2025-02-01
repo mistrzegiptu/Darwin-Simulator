@@ -1,0 +1,138 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\model\\mapdirection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\model\\mapdirection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\model\\vector2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\model\\vector2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\model\\iworldmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\model\\iworldmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\obj\\debug\\net8.0-windows\\app.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\obj\\debug\\net8.0-windows\\app.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|c:\\users\\franek\\desktop\\studyja\\sharp-darwin-simulator\\darwinsimulator\\darwinsimulator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}|DarwinSimulator\\DarwinSimulator.csproj|solutionrelative:darwinsimulator\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MapDirection.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\MapDirection.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\model\\MapDirection.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\MapDirection.cs",
+              "RelativeToolTip": "DarwinSimulator\\model\\MapDirection.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABsAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T14:14:16.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Vector2d.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\Vector2d.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\model\\Vector2d.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\Vector2d.cs",
+              "RelativeToolTip": "DarwinSimulator\\model\\Vector2d.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T14:57:48.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IWorldMap.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\IWorldMap.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\model\\IWorldMap.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\model\\IWorldMap.cs",
+              "RelativeToolTip": "DarwinSimulator\\model\\IWorldMap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T14:53:49.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.g.i.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+              "RelativeToolTip": "DarwinSimulator\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAawEIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T14:52:59.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\App.xaml.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\App.xaml.cs",
+              "RelativeToolTip": "DarwinSimulator\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T14:52:55.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "DarwinSimulator\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\MainWindow.xaml",
+              "RelativeToolTip": "DarwinSimulator\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-31T14:52:15.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "DarwinSimulator\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Franek\\Desktop\\studyja\\Sharp-Darwin-Simulator\\DarwinSimulator\\DarwinSimulator\\MainWindow.xaml.cs",
+              "RelativeToolTip": "DarwinSimulator\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-31T14:52:12.209Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
