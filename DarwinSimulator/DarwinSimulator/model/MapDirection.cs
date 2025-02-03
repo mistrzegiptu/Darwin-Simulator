@@ -13,6 +13,7 @@ namespace DarwinSimulator.model
     }
     internal static class MapDirectionExtension
     {
+        public static int GetLength() => Enum.GetValues(typeof(MapDirection)).Length;
         public static Vector2d ToUnitVector(this MapDirection direction)
         {
             return direction switch
@@ -31,7 +32,7 @@ namespace DarwinSimulator.model
 
         public static MapDirection Rotate(this MapDirection direction, int rotations)
         {
-            int length = Enum.GetValues(typeof(MapDirection)).Length;
+            int length = GetLength();
             int newValue = ((int)direction + length) % length;
 
             if (newValue < 0)
@@ -42,7 +43,7 @@ namespace DarwinSimulator.model
 
         public static MapDirection Reverse(this MapDirection direction)
         {
-            return direction.Rotate(Enum.GetValues(typeof(MapDirection)).Length / 2);
+            return direction.Rotate(GetLength() / 2);
         }
 
         public static List<MapDirection> GetMainDirections()
