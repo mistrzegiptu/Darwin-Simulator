@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model.records
 {
-    internal record AnimalParameters(int StartingEnergyLevel, int MinEnergyForReproducing, int EnergyUsedForReproducing);
+    internal record AnimalParameters(int StartingEnergyLevel, int MinEnergyForReproducing, int EnergyUsedForReproducing, AnimalType AnimalType);
 }

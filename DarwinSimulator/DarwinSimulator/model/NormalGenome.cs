@@ -18,8 +18,8 @@ namespace DarwinSimulator.model
 
         protected override void Mutate()
         {
-            int minMutationCount = Parameters.GenomeParameters.MinMutationCount;
-            int maxMutationCount = Parameters.GenomeParameters.MaxMutationCount;
+            int minMutationCount = parameters.GenomeParameters.MinMutationCount;
+            int maxMutationCount = parameters.GenomeParameters.MaxMutationCount;
             int mutationCount = rand.Next(minMutationCount, maxMutationCount + 1);
 
             for (int i = 0; i < mutationCount; i++)

@@ -19,7 +19,7 @@ namespace DarwinSimulator.model
                 case GenomeType.SLIGHTLY_ADJUSTING_GENOME:
                     return new SlightlyAdjustingGenome(parameters);
                 default:
-                    throw new NotImplementedException();
+                    throw new ArgumentException();
             }
         }
 
@@ -34,7 +34,7 @@ namespace DarwinSimulator.model
                 case GenomeType.SLIGHTLY_ADJUSTING_GENOME:
                     return new SlightlyAdjustingGenome(left, right, leftEnergy, rightEnergy, parameters);
                 default:
-                    throw new NotImplementedException();
+                    throw new ArgumentException();
             }
         }
     }
