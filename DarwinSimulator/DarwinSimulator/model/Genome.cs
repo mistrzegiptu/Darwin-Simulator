@@ -10,7 +10,7 @@ namespace DarwinSimulator.model
 {
     internal abstract class Genome
     {
-        public Parameters Parameters { get; }
+        protected readonly Parameters parameters;
         protected readonly Random rand = new Random();
         protected int[] genes;
         protected readonly int genomeLength;
@@ -19,7 +19,7 @@ namespace DarwinSimulator.model
 
         public Genome(Parameters parameters)
         {
-            Parameters = parameters;
+            this.parameters = parameters;
             genomeLength = parameters.GenomeParameters.GenomeLength;
             genes = new int[genomeLength];
             currentIndex = rand.Next(0, genomeLength);
@@ -30,7 +30,7 @@ namespace DarwinSimulator.model
 
         public Genome(Genome left, Genome right, int leftEnergy, int rightEnergy, Parameters parameters)
         {
-            Parameters = parameters;
+            this.parameters = parameters;
             genomeLength = parameters.GenomeParameters.GenomeLength;
             genes = new int[genomeLength];
             currentIndex = rand.Next(genomeLength);
@@ -51,6 +51,11 @@ namespace DarwinSimulator.model
         {
             currentIndex = (currentIndex + 1) % genomeLength;
             return genes[currentIndex];
+        }
+
+        public void JumpToRandom()
+        {
+            currentIndex = rand.Next(genomeLength);
         }
 
         protected abstract void Mutate();
