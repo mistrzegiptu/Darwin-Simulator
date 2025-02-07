@@ -16,7 +16,7 @@ namespace DarwinSimulator.model
         {
         }
 
-        public override void Move(MoveValidator moveValidator)
+        public override void Move(IMoveValidator moveValidator)
         {
             base.Move(moveValidator);
 
