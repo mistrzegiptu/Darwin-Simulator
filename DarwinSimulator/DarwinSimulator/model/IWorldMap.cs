@@ -8,7 +8,8 @@ namespace DarwinSimulator.model
 {
     internal interface IWorldMap
     {
-        void RemoveDeadAnimals();
+        void PassDay(int day);
+        void RemoveDeadAnimals(int day);
         void MoveAnimals();
         void EatPlants();
         void ReproduceAnimals();

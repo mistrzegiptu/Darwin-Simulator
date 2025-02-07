@@ -13,13 +13,14 @@ namespace DarwinSimulator.model
         protected static readonly Random rand = new Random();
 
         protected readonly Genome genome;
-        protected Vector2d position;
+        public Vector2d Position { get; protected set; }
+
         protected MapDirection direction;
         protected int energy = 0;
 
         protected int age = 0;
         protected int plantsEaten = 0;
-        protected bool isAlive = true;
+        public bool IsAlive { get; protected set; } = true;
         protected int deathDay = -1;
         protected readonly List<Animal> children = new List<Animal>();
 
@@ -27,7 +28,7 @@ namespace DarwinSimulator.model
         {
             genome = GenomeFactory.createGenome(parameters);
             energy = parameters.AnimalParameters.StartingEnergyLevel;
-            position = startingPosition;
+            Position = startingPosition;
 
             this.parameters = parameters;
         }
@@ -35,7 +36,7 @@ namespace DarwinSimulator.model
         public Animal(Genome genome, Vector2d position, int energy, Parameters parameters)
         {
             this.genome = genome;
-            this.position = position;
+            this.Position = position;
             this.energy = energy;
             this.parameters = parameters;
         }
@@ -49,7 +50,7 @@ namespace DarwinSimulator.model
 
             Genome childGenome = GenomeFactory.createGenome(firstParent.genome, secondParent.genome, firstParent.energy, secondParent.energy, parameters);
 
-            Animal child = AnimalFactory.createAnimal(childGenome, position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
+            Animal child = AnimalFactory.createAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
 
             firstParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
             secondParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
@@ -60,17 +61,17 @@ namespace DarwinSimulator.model
             return child;
         }
 
-        public virtual void Move(MoveValidator moveValidator)
+        public virtual void Move(IMoveValidator moveValidator)
         {
             direction = direction.Rotate(genome.GetNext());
             Vector2d unitVector = direction.ToUnitVector();
 
-            if (moveValidator.CanMoveTo(position.Add(unitVector)))
-                position.Add(unitVector);
+            if (moveValidator.CanMoveTo(Position.Add(unitVector)))
+                Position.Add(unitVector);
             else
                 direction = direction.Reverse();
 
-            position = moveValidator.ChangeOnBound(position);
+            Position = moveValidator.ChangeOnBound(Position);
 
             loseEnergy(1);
             age++;
@@ -86,7 +87,12 @@ namespace DarwinSimulator.model
 
         public void Die()
         {
-            isAlive = false;
+            IsAlive = false;
+        }
+
+        public void SetDeathDay(int day)
+        {
+            deathDay = day;
         }
     }
 }

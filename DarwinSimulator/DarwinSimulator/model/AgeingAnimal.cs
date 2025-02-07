@@ -8,7 +8,7 @@ namespace DarwinSimulator.model
 {
     internal class AgeingAnimal : Animal
     {
-        private readonly int seniorAge = 60;
+        private readonly int _seniorAge = 60;
         public AgeingAnimal(Vector2d startingPosition, Parameters parameters) : base(startingPosition, parameters)
         {
         }
@@ -17,10 +17,10 @@ namespace DarwinSimulator.model
         {
         }
 
-        public override void Move(MoveValidator moveValidator)
+        public override void Move(IMoveValidator moveValidator)
         {
             int chanceToSkipMove = rand.Next(100);
-            int maxChanceToSkipMove = 80 * age / seniorAge;
+            int maxChanceToSkipMove = 80 * age / _seniorAge;
             maxChanceToSkipMove = maxChanceToSkipMove > 80 ? 80 : maxChanceToSkipMove;
 
             if(chanceToSkipMove < maxChanceToSkipMove)

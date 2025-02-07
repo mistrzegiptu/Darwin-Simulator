@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal interface MoveValidator
+    internal interface IMoveValidator
     {
         bool CanMoveTo(Vector2d position);
         Vector2d ChangeOnBound(Vector2d position);
