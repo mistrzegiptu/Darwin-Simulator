@@ -13,6 +13,7 @@ namespace DarwinSimulator.model
         protected readonly Random rand = new Random();
         protected readonly Parameters parameters;
         protected readonly Boundary boundary;
+        protected readonly IPlanter planter;
 
         protected readonly Dictionary<Vector2d, List<Animal>> animals = new();
         protected readonly Dictionary<Vector2d, IWorldElement> plants = new();
@@ -26,13 +27,14 @@ namespace DarwinSimulator.model
         {
             this.parameters = parameters;
 
+            planter = PlanterFactory.createPlanter(parameters);
+
             Vector2d lowerLeft = new Vector2d(0, 0);
             Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width, parameters.WorldParameters.Height);
             boundary = new Boundary(lowerLeft, upperRight);
-
         }
 
-        public void PassDay(int day)
+        public virtual void PassDay(int day)
         {
             RemoveDeadAnimals(day);
             MoveAnimals();
@@ -45,9 +47,9 @@ namespace DarwinSimulator.model
         {
             foreach(var animalsOnField in animals.Values)
             {
-                deadAnimals.AddRange(animalsOnField);
+                deadAnimals.AddRange(animalsOnField.Where(x => x.IsAlive == false));
 
-                foreach(var animal in animalsOnField)
+                foreach (var animal in animalsOnField)
                 {
                     if(!animal.IsAlive)
                     {
@@ -57,12 +59,11 @@ namespace DarwinSimulator.model
                 }
             }
         }
-        public void MoveAnimals()
+
+        public virtual void MoveAnimals()
         {
             foreach (var animalsOnField in animals.Values)
             {
-                deadAnimals.AddRange(animalsOnField);
-
                 foreach (var animal in animalsOnField)
                 {
                     animal.Move(this);
@@ -72,7 +73,15 @@ namespace DarwinSimulator.model
 
         public void EatPlants()
         {
-            throw new NotImplementedException();
+            foreach(var animalsOnField in animals.Values)
+            {
+                if(plants.ContainsKey(animalsOnField.First().Position))
+                {
+                    Animal eatingAnimal = animalsOnField.OrderByDescending(x => x.Energy).ThenByDescending(x => x.Age).ThenByDescending(x => x.ChildCount).First();
+                    eatingAnimal.EatPlant(parameters.WorldParameters.EnergyForEating);
+                    plants.Remove(eatingAnimal.Position);
+                }
+            }
         }
         
         public void ReproduceAnimals()

@@ -20,13 +20,13 @@ namespace DarwinSimulator.model
         public override void Move(IMoveValidator moveValidator)
         {
             int chanceToSkipMove = rand.Next(100);
-            int maxChanceToSkipMove = 80 * age / _seniorAge;
+            int maxChanceToSkipMove = 80 * Age / _seniorAge;
             maxChanceToSkipMove = maxChanceToSkipMove > 80 ? 80 : maxChanceToSkipMove;
 
             if(chanceToSkipMove < maxChanceToSkipMove)
             {
                 loseEnergy(1);
-                age++;
+                Age++;
             }
             else
                 base.Move(moveValidator);

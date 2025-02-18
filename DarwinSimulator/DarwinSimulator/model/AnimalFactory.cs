@@ -14,6 +14,10 @@ namespace DarwinSimulator.model
             {
                 case AnimalType.NORMAL_ANIMAL: 
                     return new NormalAnimal(startingPosition, parameters);
+                case AnimalType.CRAZY_ANIMAL:
+                    return new CrazyAnimal(startingPosition, parameters);
+                case AnimalType.AGEING_ANIMAL:
+                    return new AgeingAnimal(startingPosition, parameters);
                 default:
                     throw new ArgumentException();
             }
@@ -25,6 +29,10 @@ namespace DarwinSimulator.model
             {
                 case AnimalType.NORMAL_ANIMAL:
                     return new NormalAnimal(genome, position, energy, parameters);
+                case AnimalType.CRAZY_ANIMAL:
+                    return new CrazyAnimal(genome, position, energy, parameters);
+                case AnimalType.AGEING_ANIMAL:
+                    return new AgeingAnimal(genome, position, energy, parameters);
                 default:
                     throw new ArgumentException();
             }

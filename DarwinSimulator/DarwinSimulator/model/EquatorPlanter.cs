@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal enum MapType
+    internal class EquatorPlanter : Planter
     {
-        EARTH_MAP, POLE_MAP, FIRE_MAP, WATER_MAP, WILD_OWL_BEAR_MAP
     }
 }
