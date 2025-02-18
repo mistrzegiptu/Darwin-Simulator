@@ -16,18 +16,22 @@ namespace DarwinSimulator.model
         public Vector2d Position { get; protected set; }
 
         protected MapDirection direction;
-        protected int energy = 0;
+        public int Energy { get; protected set; } = 0;
 
-        protected int age = 0;
+        public int Age { get; protected set; } = 0;
         protected int plantsEaten = 0;
         public bool IsAlive { get; protected set; } = true;
         protected int deathDay = -1;
         protected readonly List<Animal> children = new List<Animal>();
+        public int ChildCount
+        {
+            get => children.Count;
+        }
 
         public Animal(Vector2d startingPosition, Parameters parameters)
         {
             genome = GenomeFactory.createGenome(parameters);
-            energy = parameters.AnimalParameters.StartingEnergyLevel;
+            Energy = parameters.AnimalParameters.StartingEnergyLevel;
             Position = startingPosition;
 
             this.parameters = parameters;
@@ -37,7 +41,7 @@ namespace DarwinSimulator.model
         {
             this.genome = genome;
             this.Position = position;
-            this.energy = energy;
+            this.Energy = energy;
             this.parameters = parameters;
         }
 
@@ -45,10 +49,10 @@ namespace DarwinSimulator.model
         {
             Animal firstParent = this;
 
-            if (firstParent.energy < parameters.AnimalParameters.MinEnergyForReproducing || secondParent.energy < parameters.AnimalParameters.MinEnergyForReproducing)
+            if (firstParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing || secondParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing)
                 return null;
 
-            Genome childGenome = GenomeFactory.createGenome(firstParent.genome, secondParent.genome, firstParent.energy, secondParent.energy, parameters);
+            Genome childGenome = GenomeFactory.createGenome(firstParent.genome, secondParent.genome, firstParent.Energy, secondParent.Energy, parameters);
 
             Animal child = AnimalFactory.createAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
 
@@ -61,7 +65,7 @@ namespace DarwinSimulator.model
             return child;
         }
 
-        public virtual void Move(IMoveValidator moveValidator)
+        public virtual void Move(IMoveValidator moveValidator, int energyLoss = 1)
         {
             direction = direction.Rotate(genome.GetNext());
             Vector2d unitVector = direction.ToUnitVector();
@@ -73,15 +77,21 @@ namespace DarwinSimulator.model
 
             Position = moveValidator.ChangeOnBound(Position);
 
-            loseEnergy(1);
-            age++;
+            loseEnergy(energyLoss);
+            Age++;
+        }
+
+        public void EatPlant(int energyForEating)
+        {
+            Energy += energyForEating;
+            plantsEaten++;
         }
 
         protected void loseEnergy(int energyAmount)
         {
-            energy -= energyAmount;
+            Energy -= energyAmount;
 
-            if (energy < 0)
+            if (Energy < 0)
                 Die();
         }
 

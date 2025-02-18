@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal enum MapType
+    internal interface IPlanter
     {
-        EARTH_MAP, POLE_MAP, FIRE_MAP, WATER_MAP, WILD_OWL_BEAR_MAP
+        void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
     }
 }

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model.records
 {
-    internal record WorldParameters(int Width, int Height, MapType MapType, int StartingPlantCount, int EnergyForEating,
+    internal record WorldParameters(int Width, int Height, MapType MapType, PlanterType PlanterType, int StartingPlantCount, int EnergyForEating,
                                     int DailyPlantGrow, int StartingAnimalCount, int NewFirePeriod, int FireDuration);
 }
