@@ -8,6 +8,7 @@ namespace DarwinSimulator.model
 {
     internal abstract class Planter : IPlanter
     {
+        protected readonly Random rand = new Random();
         protected WorldMap worldMap;
 
         public Planter(WorldMap worldMap) 

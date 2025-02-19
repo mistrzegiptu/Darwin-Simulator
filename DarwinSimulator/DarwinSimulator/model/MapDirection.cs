@@ -51,6 +51,12 @@ namespace DarwinSimulator.model
             return new List<MapDirection> { MapDirection.NORTH, MapDirection.EAST, MapDirection.SOUTH, MapDirection.WEST };
         }
 
+        public static List<MapDirection> GetAllDirections()
+        {
+            return new List<MapDirection> { MapDirection.NORTH, MapDirection.NORTH_EAST, MapDirection.EAST, MapDirection.SOUTH_EAST, 
+                                            MapDirection.SOUTH, MapDirection.SOUTH_WEST, MapDirection.WEST, MapDirection.NORTH_WEST };
+        }
+
         public static String ToString(this MapDirection direction)
         {
             return direction switch
