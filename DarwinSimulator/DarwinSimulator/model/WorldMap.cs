@@ -12,7 +12,7 @@ namespace DarwinSimulator.model
     {
         protected readonly Random rand = new Random();
         protected readonly Parameters parameters;
-        protected readonly Boundary boundary;
+        public Boundary Boundary { get; protected set; }
         protected readonly IPlanter planter;
 
         protected readonly Dictionary<Vector2d, List<Animal>> animals = new();
@@ -21,17 +21,19 @@ namespace DarwinSimulator.model
         protected readonly List<Animal> deadAnimals = new();
         protected readonly HashSet<Vector2d> preferredFields = new();
         protected readonly HashSet<Vector2d> nonPreferredFields = new();
+
+        public event Action<Vector2d>? AnimalDied;
         // TODO: ADD MAP CHANGE LISTENERS
 
         public WorldMap(Parameters parameters)
         {
             this.parameters = parameters;
 
-            planter = PlanterFactory.createPlanter(parameters);
+            planter = PlanterFactory.createPlanter(parameters, this);
 
             Vector2d lowerLeft = new Vector2d(0, 0);
             Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width, parameters.WorldParameters.Height);
-            boundary = new Boundary(lowerLeft, upperRight);
+            Boundary = new Boundary(lowerLeft, upperRight);
         }
 
         public virtual void PassDay(int day)
@@ -54,7 +56,8 @@ namespace DarwinSimulator.model
                     if(!animal.IsAlive)
                     {
                         animal.SetDeathDay(day-1);
-                        RemoveAnimal(animal); 
+                        RemoveAnimal(animal);
+                        AnimalDied?.Invoke(animal.Position);
                     }
                 }
             }
@@ -91,7 +94,7 @@ namespace DarwinSimulator.model
 
         public void SpawnNewPlants(int plantCount)
         {
-            throw new NotImplementedException();
+            planter.SpawnNewPlants(plants, plantCount);
         }
 
         private void PlaceAnimal(Animal animal)
@@ -116,15 +119,15 @@ namespace DarwinSimulator.model
 
         public bool CanMoveTo(Vector2d position)
         {
-            return position.Y <= boundary.UpperRight.Y && position.Y >= boundary.LowerLeft.Y;
+            return position.Y <= Boundary.UpperRight.Y && position.Y >= Boundary.LowerLeft.Y;
         }
 
         public Vector2d ChangeOnBound(Vector2d position)
         {
-            if (position.X == boundary.LowerLeft.X - 1)
-                return new Vector2d(boundary.UpperRight.X, position.Y);
-            else if(position.X == boundary.UpperRight.X + 1)
-                return new Vector2d(boundary.LowerLeft.X, position.Y);
+            if (position.X == Boundary.LowerLeft.X - 1)
+                return new Vector2d(Boundary.UpperRight.X, position.Y);
+            else if(position.X == Boundary.UpperRight.X + 1)
+                return new Vector2d(Boundary.LowerLeft.X, position.Y);
 
             return position;
         }
