@@ -19,8 +19,6 @@ namespace DarwinSimulator.model
         protected readonly Dictionary<Vector2d, IWorldElement> plants = new();
 
         protected readonly List<Animal> deadAnimals = new();
-        protected readonly HashSet<Vector2d> preferredFields = new();
-        protected readonly HashSet<Vector2d> nonPreferredFields = new();
 
         public event Action<Vector2d>? AnimalDied;
         // TODO: ADD MAP CHANGE LISTENERS
@@ -29,7 +27,7 @@ namespace DarwinSimulator.model
         {
             this.parameters = parameters;
 
-            planter = PlanterFactory.createPlanter(parameters, this);
+            planter = PlanterFactory.CreatePlanter(parameters, this);
 
             Vector2d lowerLeft = new Vector2d(0, 0);
             Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width, parameters.WorldParameters.Height);
@@ -78,18 +76,43 @@ namespace DarwinSimulator.model
         {
             foreach(var animalsOnField in animals.Values)
             {
-                if(plants.ContainsKey(animalsOnField.First().Position))
+                if (plants.ContainsKey(animalsOnField.First().Position))
                 {
                     Animal eatingAnimal = animalsOnField.OrderByDescending(x => x.Energy).ThenByDescending(x => x.Age).ThenByDescending(x => x.ChildCount).First();
-                    eatingAnimal.EatPlant(parameters.WorldParameters.EnergyForEating);
-                    plants.Remove(eatingAnimal.Position);
+
+                    IWorldElement plant = plants[eatingAnimal.Position];
+
+                    if (plant is BigPlant bigPlant)
+                    {
+                        eatingAnimal.Equals(parameters.WorldParameters.EnergyForEating * bigPlant.EnergyMultiplier);
+
+                        foreach (var position in bigPlant.CoveredPositions)
+                            plants.Remove(position);
+                    }
+                    else
+                    {
+                        eatingAnimal.EatPlant(parameters.WorldParameters.EnergyForEating);
+                        plants.Remove(eatingAnimal.Position);
+                    }
                 }
             }
         }
-        
+
         public void ReproduceAnimals()
         {
-            throw new NotImplementedException();
+            foreach (var animalsOnField in animals.Values)
+            {
+                animalsOnField.OrderByDescending(x => x.Energy).ThenByDescending(x => x.Age).ThenByDescending(x => x.ChildCount);
+                for (int i = 0; i < animalsOnField.Count; i += 2)
+                {
+                    Animal? child;
+                    
+                    if(animalsOnField[i].TryReproduce(animalsOnField[i + 1], out child))
+                    {
+                        PlaceAnimal(child!);
+                    }
+                }
+            }
         }
 
         public void SpawnNewPlants(int plantCount)

@@ -8,7 +8,7 @@ namespace DarwinSimulator.model
 {
     internal class GenomeFactory
     {
-        public static Genome createGenome(Parameters parameters)
+        public static Genome CreateGenome(Parameters parameters)
         {
             switch (parameters.GenomeParameters.GenomeType)
             {
@@ -23,7 +23,7 @@ namespace DarwinSimulator.model
             }
         }
 
-        public static Genome createGenome(Genome left, Genome right, int leftEnergy, int rightEnergy, Parameters parameters)
+        public static Genome CreateGenome(Genome left, Genome right, int leftEnergy, int rightEnergy, Parameters parameters)
         {
             switch (parameters.GenomeParameters.GenomeType)
             {
