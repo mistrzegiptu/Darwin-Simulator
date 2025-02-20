@@ -16,16 +16,16 @@ namespace DarwinSimulator.model
         {
         }
 
-        public override void Move(IMoveValidator moveValidator)
+        public override void Move(IMoveValidator moveValidator, int energyLoss = 1)
         {
-            base.Move(moveValidator);
+            base.Move(moveValidator, energyLoss);
 
             int chanceToAnotherMove = rand.Next(100);
 
             if (chanceToAnotherMove < 20)
                 genome.JumpToRandom();
             else
-                base.Move(moveValidator);  
+                base.Move(moveValidator, energyLoss);  
         }
     }
 }

@@ -30,7 +30,7 @@ namespace DarwinSimulator.model
 
         public Animal(Vector2d startingPosition, Parameters parameters)
         {
-            genome = GenomeFactory.createGenome(parameters);
+            genome = GenomeFactory.CreateGenome(parameters);
             Energy = parameters.AnimalParameters.StartingEnergyLevel;
             Position = startingPosition;
 
@@ -45,16 +45,17 @@ namespace DarwinSimulator.model
             this.parameters = parameters;
         }
 
-        public Animal? Reproduce(Animal secondParent)
+        public bool TryReproduce(Animal secondParent, out Animal? child)
         {
             Animal firstParent = this;
+            child = null;
 
             if (firstParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing || secondParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing)
-                return null;
+                return false;
 
-            Genome childGenome = GenomeFactory.createGenome(firstParent.genome, secondParent.genome, firstParent.Energy, secondParent.Energy, parameters);
+            Genome childGenome = GenomeFactory.CreateGenome(firstParent.genome, secondParent.genome, firstParent.Energy, secondParent.Energy, parameters);
 
-            Animal child = AnimalFactory.createAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
+            child = AnimalFactory.CreateAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
 
             firstParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
             secondParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
@@ -62,7 +63,7 @@ namespace DarwinSimulator.model
             firstParent.children.Add(child);
             secondParent.children.Add(child);
 
-            return child;
+            return true;
         }
 
         public virtual void Move(IMoveValidator moveValidator, int energyLoss = 1)

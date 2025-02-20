@@ -8,7 +8,7 @@ namespace DarwinSimulator.model
 {
     internal class AnimalFactory
     {
-        public static Animal createAnimal(Vector2d startingPosition, Parameters parameters)
+        public static Animal CreateAnimal(Vector2d startingPosition, Parameters parameters)
         {
             switch (parameters.AnimalParameters.AnimalType)
             {
@@ -23,7 +23,7 @@ namespace DarwinSimulator.model
             }
         }
 
-        public static Animal createAnimal(Genome genome, Vector2d position, int energy, Parameters parameters)
+        public static Animal CreateAnimal(Genome genome, Vector2d position, int energy, Parameters parameters)
         {
             switch (parameters.AnimalParameters.AnimalType)
             {
