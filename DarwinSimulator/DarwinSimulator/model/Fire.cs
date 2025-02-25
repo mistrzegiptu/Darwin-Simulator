@@ -9,11 +9,16 @@ namespace DarwinSimulator.model
     internal class Fire : IWorldElement
     {
         public Vector2d Position { get; }
-        public int DaysActive { get; }
+        public int DaysActive { get; private set; }
 
         public Fire(Vector2d position)
         {
             Position = position;
+        }
+
+        public void AddActiveDay()
+        {
+            DaysActive++;
         }
 
         public override string ToString()
