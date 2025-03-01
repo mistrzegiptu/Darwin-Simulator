@@ -55,5 +55,12 @@ namespace DarwinSimulator.model
                 }
             }
         }
+
+        public override IWorldElement? ObjectAt(Vector2d position)
+        {
+            if(_fires.ContainsKey(position))
+                return _fires[position];
+            return base.ObjectAt(position);
+        }
     }
 }
