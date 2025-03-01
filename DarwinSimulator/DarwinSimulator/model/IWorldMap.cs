@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarwinSimulator.model.records;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,15 @@ namespace DarwinSimulator.model
 {
     internal interface IWorldMap
     {
+        WorldStats WorldStats { get; }
+
         void PassDay(int day);
         void RemoveDeadAnimals(int day);
         void MoveAnimals();
         void EatPlants();
         void ReproduceAnimals();
         void SpawnNewPlants(int plantCount);
-
+        IWorldElement? ObjectAt(Vector2d position);
+        
     }
 }

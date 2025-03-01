@@ -13,15 +13,24 @@ namespace DarwinSimulator.model
         protected readonly Random rand = new Random();
         protected readonly Parameters parameters;
         public Boundary Boundary { get; protected set; }
+
         protected readonly IPlanter planter;
 
         protected readonly Dictionary<Vector2d, List<Animal>> animals = new();
         protected readonly Dictionary<Vector2d, IWorldElement> plants = new();
 
+        public WorldStats WorldStats
+        {
+            get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopulatGenome(), GetAverageEnergy(), GetAveragaLifetime(), GetAverageChildCount());
+        }
+
+        private int _animalsCount = 0;
+        private int _plantsCount = 0;
+
         protected readonly List<Animal> deadAnimals = new();
 
         public event Action<Vector2d>? AnimalDied;
-        // TODO: ADD MAP CHANGE LISTENERS
+
 
         public WorldMap(Parameters parameters)
         {
@@ -118,6 +127,7 @@ namespace DarwinSimulator.model
         public void SpawnNewPlants(int plantCount)
         {
             planter.SpawnNewPlants(plants, plantCount);
+            _plantsCount += plantCount;
         }
 
         private void PlaceAnimal(Animal animal)
@@ -128,6 +138,8 @@ namespace DarwinSimulator.model
                 animals.Add(position, new List<Animal> {animal});
             else
                 animals[position].Add(animal);
+
+            _animalsCount++;
         }
 
         private void RemoveAnimal(Animal animal)
@@ -153,6 +165,40 @@ namespace DarwinSimulator.model
                 return new Vector2d(Boundary.LowerLeft.X, position.Y);
 
             return position;
+        }
+
+        public virtual IWorldElement? ObjectAt(Vector2d position)
+        { 
+            if(animals.ContainsKey(position))
+                return animals[position].First();
+            else if(plants.ContainsKey(position))
+                return plants[position];
+            return null;
+        }
+
+        protected virtual int GetFreeFieldsCount()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual String GetMostPopulatGenome()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual int GetAverageEnergy()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual int GetAveragaLifetime()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected virtual int GetAverageChildCount()
+        {
+            throw new NotImplementedException();
         }
     }
 }

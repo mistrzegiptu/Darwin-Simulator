@@ -16,9 +16,9 @@ namespace DarwinSimulator
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuWindow : Window
     {
-        public MainWindow()
+        public MenuWindow()
         {
             InitializeComponent();
         }
@@ -51,6 +51,10 @@ namespace DarwinSimulator
                     (AnimalType)AnimalTypeComboBox.SelectedItem);
 
                 Parameters parameters = new Parameters(animalParameters, genomeParameters, worldParameters);
+
+                Simulation simulation = new Simulation(parameters);
+                SimulationWindow simulationWindow = new SimulationWindow();
+                simulationWindow.Show();
             }
             catch (Exception ex)
             {

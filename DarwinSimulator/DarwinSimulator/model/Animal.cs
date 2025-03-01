@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal abstract class Animal
+    internal abstract class Animal : IWorldElement
     {
         protected readonly Parameters parameters;
         protected static readonly Random rand = new Random();
@@ -104,6 +104,11 @@ namespace DarwinSimulator.model
         public void SetDeathDay(int day)
         {
             deathDay = day;
+        }
+
+        public override string ToString()
+        {
+            return "A";
         }
     }
 }
