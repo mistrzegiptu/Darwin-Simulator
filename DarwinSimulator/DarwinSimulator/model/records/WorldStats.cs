@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace DarwinSimulator.model.records
 {
     internal record WorldStats(int AllAnimalCount, int AllPlantCount, int FreeFields, string MostPopularGenotype,
-                               int AverageEnergy, int AverageLifetime, int AverageChildCount);
+                               double AverageEnergy, double AverageLifetime, double AverageChildCount);
 }

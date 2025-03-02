@@ -12,7 +12,7 @@ namespace DarwinSimulator.model
         protected readonly Parameters parameters;
         protected static readonly Random rand = new Random();
 
-        protected readonly Genome genome;
+        public Genome Genome { get; }
         public Vector2d Position { get; protected set; }
 
         protected MapDirection direction;
@@ -30,7 +30,7 @@ namespace DarwinSimulator.model
 
         public Animal(Vector2d startingPosition, Parameters parameters)
         {
-            genome = GenomeFactory.CreateGenome(parameters);
+            Genome = GenomeFactory.CreateGenome(parameters);
             Energy = parameters.AnimalParameters.StartingEnergyLevel;
             Position = startingPosition;
 
@@ -39,7 +39,7 @@ namespace DarwinSimulator.model
 
         public Animal(Genome genome, Vector2d position, int energy, Parameters parameters)
         {
-            this.genome = genome;
+            this.Genome = genome;
             this.Position = position;
             this.Energy = energy;
             this.parameters = parameters;
@@ -53,7 +53,7 @@ namespace DarwinSimulator.model
             if (firstParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing || secondParent.Energy < parameters.AnimalParameters.MinEnergyForReproducing)
                 return false;
 
-            Genome childGenome = GenomeFactory.CreateGenome(firstParent.genome, secondParent.genome, firstParent.Energy, secondParent.Energy, parameters);
+            Genome childGenome = GenomeFactory.CreateGenome(firstParent.Genome, secondParent.Genome, firstParent.Energy, secondParent.Energy, parameters);
 
             child = AnimalFactory.CreateAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
 
@@ -68,7 +68,7 @@ namespace DarwinSimulator.model
 
         public virtual void Move(IMoveValidator moveValidator, int energyLoss = 1)
         {
-            direction = direction.Rotate(genome.GetNext());
+            direction = direction.Rotate(Genome.GetNext());
             Vector2d unitVector = direction.ToUnitVector();
 
             if (moveValidator.CanMoveTo(Position.Add(unitVector)))
