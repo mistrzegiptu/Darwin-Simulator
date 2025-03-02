@@ -23,7 +23,7 @@ namespace DarwinSimulator.model
             int chanceToAnotherMove = rand.Next(100);
 
             if (chanceToAnotherMove < 20)
-                genome.JumpToRandom();
+                Genome.JumpToRandom();
             else
                 base.Move(moveValidator, energyLoss);  
         }

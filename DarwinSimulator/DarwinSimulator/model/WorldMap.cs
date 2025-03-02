@@ -178,27 +178,46 @@ namespace DarwinSimulator.model
 
         protected virtual int GetFreeFieldsCount()
         {
-            throw new NotImplementedException();
+            int xLen = Boundary.UpperRight.X - Boundary.LowerLeft.X;
+            int yLen = Boundary.UpperRight.Y - Boundary.LowerLeft.Y;
+
+            int livingAnimals = animals.Values.Select(x => x.Where(y => y.IsAlive)).Count();
+            int plantsCount = plants.Count();
+
+            return xLen * yLen - livingAnimals - plantsCount;
         }
 
         protected virtual String GetMostPopulatGenome()
         {
-            throw new NotImplementedException();
+            Dictionary<String, int> genomes = new Dictionary<String, int>();
+
+            List<Animal> allAnimals = animals.Values.SelectMany(x => x).ToList();
+            allAnimals.AddRange(deadAnimals);
+
+            foreach(var animal in allAnimals)
+            {
+                if (genomes.ContainsKey(animal.Genome.ToString()))
+                    genomes[animal.Genome.ToString()] += 1;
+                else
+                    genomes.Add(animal.Genome.ToString(), 1);
+            }
+
+            return genomes.OrderByDescending(x => x.Value).First().Key;
         }
 
-        protected virtual int GetAverageEnergy()
+        protected virtual double GetAverageEnergy()
         {
-            throw new NotImplementedException();
+            return animals.Values.SelectMany(x => x).Average(x => x.Energy);
         }
 
-        protected virtual int GetAveragaLifetime()
+        protected virtual double GetAveragaLifetime()
         {
-            throw new NotImplementedException();
+            return deadAnimals.Average(x => x.Age);
         }
 
-        protected virtual int GetAverageChildCount()
+        protected virtual double GetAverageChildCount()
         {
-            throw new NotImplementedException();
+            return animals.Values.SelectMany(x => x).Average(x => x.ChildCount);
         }
     }
 }

@@ -59,5 +59,13 @@ namespace DarwinSimulator.model
         }
 
         protected abstract void Mutate();
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            genes.Select(x => sb.Append(x));
+            
+            return sb.ToString();
+        }
     }
 }
