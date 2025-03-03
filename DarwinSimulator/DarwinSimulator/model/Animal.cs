@@ -57,8 +57,8 @@ namespace DarwinSimulator.model
 
             child = AnimalFactory.CreateAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
 
-            firstParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
-            secondParent.loseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
+            firstParent.LoseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
+            secondParent.LoseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
 
             firstParent.children.Add(child);
             secondParent.children.Add(child);
@@ -78,7 +78,7 @@ namespace DarwinSimulator.model
 
             Position = moveValidator.ChangeOnBound(Position);
 
-            loseEnergy(energyLoss);
+            LoseEnergy(energyLoss);
             Age++;
         }
 
@@ -88,7 +88,7 @@ namespace DarwinSimulator.model
             plantsEaten++;
         }
 
-        protected void loseEnergy(int energyAmount)
+        protected void LoseEnergy(int energyAmount)
         {
             Energy -= energyAmount;
 

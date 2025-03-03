@@ -44,54 +44,54 @@
         <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Header="World Parameters">
             <StackPanel>
                 <Label Content="Width:"/>
-                <TextBox x:Name="WorldWidthTextBox" Text="10"/>
+                <TextBox Text="{Binding WorldWidth, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Height:"/>
-                <TextBox x:Name="WorldHeightTextBox" Text="10"/>
+                <TextBox Text="{Binding WorldHeight, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Map Type:"/>
-                <ComboBox x:Name="MapTypeComboBox" ItemsSource="{Binding Source={StaticResource MapType}}" SelectedIndex="0"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource MapType}}" SelectedItem="{Binding SelectedMapType}"/>
                 <Label Content="Planter Type:"/>
-                <ComboBox x:Name="PlanterTypeComboBox" ItemsSource="{Binding Source={StaticResource PlanterType}}" SelectedIndex="0"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource PlanterType}}" SelectedItem="{Binding SelectedPlanterType}"/>
                 <Label Content="Starting Plant Count:"/>
-                <TextBox x:Name="StartingPlantCountTextBox" Text="10"/>
+                <TextBox Text="{Binding StartingPlantCount, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Energy for Eating:"/>
-                <TextBox x:Name="EnergyForEatingTextBox" Text="2"/>
+                <TextBox Text="{Binding EnergyForEating, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Daily Plant Grow:"/>
-                <TextBox x:Name="DailyPlantGrowTextBox" Text="4"/>
+                <TextBox Text="{Binding DailyPlantGrow, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Starting Animal Count:"/>
-                <TextBox x:Name="StartingAnimalCountTextBox" Text="4"/>
+                <TextBox Text="{Binding StartingAnimalCount, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="New Fire Period:"/>
-                <TextBox x:Name="NewFirePeriodTextBox" Text="0"/>
+                <TextBox Text="{Binding NewFirePeriod, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Fire Duration:"/>
-                <TextBox x:Name="FireDurationTextBox" Text="0"/>
+                <TextBox Text="{Binding FireDuration, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Header="Genome Parameters">
             <StackPanel>
                 <Label Content="Min Mutation Count:"/>
-                <TextBox x:Name="MinMutationCountTextBox" Text="1"/>
+                <TextBox Text="{Binding MinMutationCount, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Max Mutation Count:"/>
-                <TextBox x:Name="MaxMutationCountTextBox" Text="5"/>
+                <TextBox Text="{Binding MaxMutationCount, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Genome Type:"/>
-                <ComboBox x:Name="GenomeTypeComboBox" ItemsSource="{Binding Source={StaticResource GenomeType}}" SelectedIndex="0"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource GenomeType}}" SelectedItem="{Binding SelectedGenomeType}"/>
                 <Label Content="Genome Length:"/>
-                <TextBox x:Name="GenomeLengthTextBox" Text="20"/>
+                <TextBox Text="{Binding GenomeLength, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="Animal Parameters">
             <StackPanel>
                 <Label Content="Starting Energy Level:"/>
-                <TextBox x:Name="StartingEnergyLevelTextBox" Text="10"/>
+                <TextBox Text="{Binding StartingEnergyLevel, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Min Energy for Reproducing:"/>
-                <TextBox x:Name="MinEnergyForReproducingTextBox" Text="6"/>
+                <TextBox Text="{Binding MinEnergyForReproducing, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Energy Used for Reproducing:"/>
-                <TextBox x:Name="EnergyUsedForReproducingTextBox" Text="4"/>
+                <TextBox Text="{Binding EnergyUsedForReproducing, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="Animal Type:"/>
-                <ComboBox x:Name="AnimalTypeComboBox" ItemsSource="{Binding Source={StaticResource AnimalType}}" SelectedIndex="0"/>
+                <ComboBox ItemsSource="{Binding Source={StaticResource AnimalType}}" SelectedItem="{Binding SelectedAnimalType}"/>
             </StackPanel>
         </GroupBox>
 
-        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Run simulation" Click="RunButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Run simulation" Command="{Binding RunSimulationCommand}"/>
     </Grid>
 </Window>
