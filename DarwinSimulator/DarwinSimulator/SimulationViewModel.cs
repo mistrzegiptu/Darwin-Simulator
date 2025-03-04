@@ -13,7 +13,7 @@ namespace DarwinSimulator
     internal class SimulationViewModel : INotifyPropertyChanged
     {
         public ICommand SwitchSimulationStateCommand { get; }
-        private Simulation _simulation;
+        private readonly Simulation _simulation;
 
         private WorldStats _worldStats;
         public WorldStats WorldStats
@@ -29,8 +29,15 @@ namespace DarwinSimulator
         public SimulationViewModel(int width, int height, Simulation simulation)
         {
             CreateGrid(width, height);
+            
             SwitchSimulationStateCommand = new Command(SwitchSimulationState);
+            
             _simulation = simulation;
+            _simulation.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == nameof(Simulation.WorldStats))
+                    WorldStats = _simulation.WorldStats;
+            };
         }
 
         private void CreateGrid(int width, int height)

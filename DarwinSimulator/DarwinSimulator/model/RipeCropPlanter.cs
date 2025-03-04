@@ -24,8 +24,10 @@ namespace DarwinSimulator.model
             ripeCropSquare = new Boundary(lowerLeft, upperRight);
         }
 
-        public override void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
+        public override int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
         {
+            int actuallyPlanted = 0;
+
             for(int i = 0; i < plants.Count; i++)
             {
                 if(rand.Next(100) < 80)
@@ -41,16 +43,22 @@ namespace DarwinSimulator.model
                 else
                 {
                     Boundary boundary = worldMap.Boundary;
-                    Vector2d randomPosition = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
+                    Vector2d spawnPosition = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
 
-                    while(randomPosition.Follows(ripeCropSquare.LowerLeft) && randomPosition.Precedes(ripeCropSquare.UpperRight))
+                    while(spawnPosition.Follows(ripeCropSquare.LowerLeft) && spawnPosition.Precedes(ripeCropSquare.UpperRight))
                     {
-                        randomPosition = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
+                        spawnPosition = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
                     }
 
-                    plants.TryAdd(randomPosition, new Plant(randomPosition));
+                    if (worldMap.CanPlant(spawnPosition))
+                    {
+                        plants.Add(spawnPosition, new Plant(spawnPosition));
+                        actuallyPlanted++;
+                    }
                 }
             }
+
+            return actuallyPlanted;
         }
     }
 }

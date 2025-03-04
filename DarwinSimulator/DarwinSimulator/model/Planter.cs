@@ -16,6 +16,6 @@ namespace DarwinSimulator.model
             this.worldMap = worldMap;
         }
 
-        public abstract void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
+        public abstract int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
     }
 }

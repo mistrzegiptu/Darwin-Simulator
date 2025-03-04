@@ -18,6 +18,6 @@ namespace DarwinSimulator.model
         void ReproduceAnimals();
         void SpawnNewPlants(int plantCount);
         IWorldElement? ObjectAt(Vector2d position);
-        
+        bool CanPlant(Vector2d position);
     }
 }

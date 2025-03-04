@@ -8,6 +8,6 @@ namespace DarwinSimulator.model
 {
     internal interface IPlanter
     {
-        void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
+        int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
     }
 }

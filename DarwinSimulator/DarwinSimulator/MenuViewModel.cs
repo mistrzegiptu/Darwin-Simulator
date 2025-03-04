@@ -11,25 +11,25 @@ namespace DarwinSimulator
 {
     internal class MenuViewModel
     {
-        public int WorldWidth { get; set; }
-        public int WorldHeight { get; set; }
+        public int WorldWidth { get; set; } = 10;
+        public int WorldHeight { get; set; } = 10;
         public MapType SelectedMapType { get; set; }
         public PlanterType SelectedPlanterType { get; set; }
-        public int StartingPlantCount { get; set; }
-        public int EnergyForEating { get; set; }
-        public int DailyPlantGrow { get; set; }
-        public int StartingAnimalCount { get; set; }
-        public int NewFirePeriod { get; set; }
-        public int FireDuration { get; set; }
+        public int StartingPlantCount { get; set; } = 10;
+        public int EnergyForEating { get; set; } = 2;
+        public int DailyPlantGrow { get; set; } = 10;
+        public int StartingAnimalCount { get; set; } = 20;
+        public int NewFirePeriod { get; set; } = 0;
+        public int FireDuration { get; set; } = 0;
 
-        public int MinMutationCount { get; set; }
-        public int MaxMutationCount { get; set; }
+        public int MinMutationCount { get; set; } = 1;
+        public int MaxMutationCount { get; set; } = 5;
         public GenomeType SelectedGenomeType { get; set; }
-        public int GenomeLength { get; set; }
+        public int GenomeLength { get; set; } = 10;
 
-        public int StartingEnergyLevel { get; set; }
-        public int MinEnergyForReproducing { get; set; }
-        public int EnergyUsedForReproducing { get; set; }
+        public int StartingEnergyLevel { get; set; } = 25;
+        public int MinEnergyForReproducing { get; set; } = 10;
+        public int EnergyUsedForReproducing { get; set; } = 5;
         public AnimalType SelectedAnimalType { get; set; }
 
 

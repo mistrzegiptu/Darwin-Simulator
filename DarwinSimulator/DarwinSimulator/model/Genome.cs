@@ -25,7 +25,8 @@ namespace DarwinSimulator.model
             currentIndex = rand.Next(0, genomeLength);
             geneMaxVal = MapDirectionExtension.GetLength();
 
-            genes.Select(x => x = rand.Next(geneMaxVal + 1));
+            for (int i = 0; i < genomeLength; i++)
+                genes[i] = rand.Next(geneMaxVal);
         }
 
         public Genome(Genome left, Genome right, int leftEnergy, int rightEnergy, Parameters parameters)
@@ -42,7 +43,7 @@ namespace DarwinSimulator.model
             if (rand.Next(2) == 0)
                 genes = left.genes.Take(leftLength).Concat(right.genes.Skip(leftLength)).ToArray();
             else
-                genes = right.genes.Take(rightLength).Concat(left.genes.Skip(rightEnergy)).ToArray();
+                genes = right.genes.Take(rightLength).Concat(left.genes.Skip(rightLength)).ToArray();
 
             Mutate();
         }

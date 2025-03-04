@@ -21,7 +21,7 @@ namespace DarwinSimulator.model
 
         public WorldStats WorldStats
         {
-            get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopulatGenome(), GetAverageEnergy(), GetAveragaLifetime(), GetAverageChildCount());
+            get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopularGenome(), GetAverageEnergy(), GetAveragaLifetime(), GetAverageChildCount());
         }
 
         private int _animalsCount = 0;
@@ -41,6 +41,9 @@ namespace DarwinSimulator.model
             Vector2d lowerLeft = new Vector2d(0, 0);
             Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width, parameters.WorldParameters.Height);
             Boundary = new Boundary(lowerLeft, upperRight);
+
+            SpawnNewPlants(parameters.WorldParameters.StartingPlantCount);
+            SpawnAnimalsAtStart(parameters.WorldParameters.StartingAnimalCount);
         }
 
         public virtual void PassDay(int day)
@@ -112,7 +115,7 @@ namespace DarwinSimulator.model
             foreach (var animalsOnField in animals.Values)
             {
                 animalsOnField.OrderByDescending(x => x.Energy).ThenByDescending(x => x.Age).ThenByDescending(x => x.ChildCount);
-                for (int i = 0; i < animalsOnField.Count; i += 2)
+                for (int i = 0; i < animalsOnField.Count - 1; i += 2)
                 {
                     Animal? child;
                     
@@ -126,8 +129,20 @@ namespace DarwinSimulator.model
 
         public void SpawnNewPlants(int plantCount)
         {
-            planter.SpawnNewPlants(plants, plantCount);
-            _plantsCount += plantCount;
+            _plantsCount += planter.SpawnNewPlants(plants, plantCount);
+        }
+
+        private void SpawnAnimalsAtStart(int animalCount)
+        {
+            for(int i = 0; i < animalCount; i++) 
+            {
+                int randX = rand.Next(Boundary.LowerLeft.X, Boundary.UpperRight.X);
+                int randY = rand.Next(Boundary.LowerLeft.Y, Boundary.UpperRight.Y);
+                
+                Vector2d randPosition = new Vector2d(randX, randY);
+
+                PlaceAnimal(AnimalFactory.CreateAnimal(randPosition, parameters));
+            }
         }
 
         private void PlaceAnimal(Animal animal)
@@ -187,7 +202,7 @@ namespace DarwinSimulator.model
             return xLen * yLen - livingAnimals - plantsCount;
         }
 
-        protected virtual String GetMostPopulatGenome()
+        protected virtual String GetMostPopularGenome()
         {
             Dictionary<String, int> genomes = new Dictionary<String, int>();
 
@@ -202,22 +217,27 @@ namespace DarwinSimulator.model
                     genomes.Add(animal.Genome.ToString(), 1);
             }
 
-            return genomes.OrderByDescending(x => x.Value).First().Key;
+            return genomes.OrderByDescending(x => x.Value).FirstOrDefault().Key;
         }
 
         protected virtual double GetAverageEnergy()
         {
-            return animals.Values.SelectMany(x => x).Average(x => x.Energy);
+            return animals.Values.SelectMany(x => x).Select(x => x.Energy).DefaultIfEmpty(0).Average();
         }
 
         protected virtual double GetAveragaLifetime()
         {
-            return deadAnimals.Average(x => x.Age);
+            return deadAnimals.Select(x => x.Age).DefaultIfEmpty(0).Average();
         }
 
         protected virtual double GetAverageChildCount()
         {
-            return animals.Values.SelectMany(x => x).Average(x => x.ChildCount);
+            return animals.Values.SelectMany(x => x).Select(x => x.ChildCount).DefaultIfEmpty(0).Average();
+        }
+
+        public bool CanPlant(Vector2d position)
+        {
+            return ObjectAt(position) == null;
         }
     }
 }

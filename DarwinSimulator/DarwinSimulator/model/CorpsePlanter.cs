@@ -15,8 +15,10 @@ namespace DarwinSimulator.model
             worldMap.AnimalDied += OnAnimalDied;
         }
 
-        public override void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
+        public override int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
         {
+            int actuallyPlanted = 0;
+
             for(int i = 0; i < plants.Count; i++)
             {
                 if (corpses.Count > 0 && rand.Next(100) < 80)
@@ -26,7 +28,11 @@ namespace DarwinSimulator.model
                     foreach (var direction in MapDirectionExtension.GetMainDirections())
                     {
                         Vector2d spawnPosition = basePosition.Add(direction.ToUnitVector());
-                        plants.TryAdd(spawnPosition, new Plant(spawnPosition));
+                        if (worldMap.CanPlant(spawnPosition))
+                        {
+                            plants.Add(spawnPosition, new Plant(spawnPosition));
+                            actuallyPlanted++;
+                        }
                     }
 
                     i += 8;
@@ -38,11 +44,17 @@ namespace DarwinSimulator.model
                     
                     int randX = rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X);
                     int randY = rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y);
-                    Vector2d position = new Vector2d(randX, randY);
+                    Vector2d spawnPosition = new Vector2d(randX, randY);
 
-                    plants.TryAdd(position, new Plant(position));
+                    if (worldMap.CanPlant(spawnPosition))
+                    {
+                        plants.Add(spawnPosition, new Plant(spawnPosition));
+                        actuallyPlanted++;
+                    }
                 }
             }
+
+            return actuallyPlanted;
         }
 
         private void OnAnimalDied(Vector2d position)
