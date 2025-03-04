@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarwinSimulator.model.records;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace DarwinSimulator
     /// </summary>
     public partial class SimulationWindow : Window
     {
-        public SimulationWindow()
+        internal SimulationWindow(int width, int height, Simulation simulation)
         {
             InitializeComponent();
+            DataContext = new SimulationViewModel(width, height, simulation);
         }
     }
 }

@@ -3,10 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DarwinSimulator"
         mc:Ignorable="d"
         Title="SimulationWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="World Stats" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+            <TextBlock Text="{Binding WorldStats.AllAnimalCount, StringFormat='All Animal Count: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.AllPlantCount, StringFormat='Plants: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.FreeFields, StringFormat='Free Fields: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.MostPopularGenotype, StringFormat='Most Popular Genotype: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.AverageEnergy, StringFormat='Avg Energy: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.AverageLifetime, StringFormat='Avg Lifetime: {0}'}"/>
+            <TextBlock Text="{Binding WorldStats.AverageChildCount, StringFormat='Avg Child Count: {0}'}"/>
+            <Button Content="Pause/Resume" Command="{Binding}"/>
+        </StackPanel>
+        <Grid x:Name="SimulationGrid" Grid.Column="1" Background="LightGray" Margin="10"/>
     </Grid>
 </Window>

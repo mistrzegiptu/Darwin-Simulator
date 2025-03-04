@@ -25,7 +25,7 @@ namespace DarwinSimulator.model
 
             if(chanceToSkipMove < maxChanceToSkipMove)
             {
-                loseEnergy(1);
+                LoseEnergy(1);
                 Age++;
             }
             else
