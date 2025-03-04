@@ -14,11 +14,12 @@ namespace DarwinSimulator.model
 
         }
 
-        public override void SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
+        public override int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
         {
             Boundary boundary = worldMap.Boundary;
             int midX = (boundary.UpperRight.X - boundary.LowerLeft.X) / 2;
             int equatorDeltaX = (boundary.UpperRight.X - boundary.LowerLeft.X) / 10;
+            int actuallyPlanted = 0;
 
             for(int i = 0; i < plantCount; i++)
             {
@@ -36,8 +37,14 @@ namespace DarwinSimulator.model
                         positionToSpawn = new Vector2d(rand.Next(midX + equatorDeltaX, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
                 }
 
-                plants.TryAdd(positionToSpawn, new Plant(positionToSpawn));
+                if(worldMap.CanPlant(positionToSpawn))
+                {
+                    plants.Add(positionToSpawn, new Plant(positionToSpawn));
+                    actuallyPlanted++;
+                }
             }
+
+            return actuallyPlanted;
         }
     }
 }

@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 using System.Threading;
 using DarwinSimulator.model;
 using System.ComponentModel;
+using DarwinSimulator.model.records;
 
 namespace DarwinSimulator
 {
     internal class Simulation : INotifyPropertyChanged
     {
         public WorldMap WorldMap { get; }
+        private WorldStats _worldStats;
+        public WorldStats WorldStats
+        { 
+            get => _worldStats;
+            set
+            {
+                _worldStats = value;
+                OnPropertyChanged(nameof(WorldStats));
+            }
+        }
         
         private int day = 0;
         private bool isRunning = false;
@@ -29,7 +40,7 @@ namespace DarwinSimulator
             {
                 WorldMap.PassDay(day);
                 day++;
-                OnPropertyChanged(nameof(WorldMap.WorldStats));
+                WorldStats = WorldMap.WorldStats;
                 try
                 {
                     Thread.Sleep(1000);
