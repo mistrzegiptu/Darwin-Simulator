@@ -7,6 +7,7 @@ using System.Threading;
 using DarwinSimulator.model;
 using System.ComponentModel;
 using DarwinSimulator.model.records;
+using System.Runtime.CompilerServices;
 
 namespace DarwinSimulator
 {
@@ -14,6 +15,9 @@ namespace DarwinSimulator
     {
         public WorldMap WorldMap { get; }
         private WorldStats _worldStats;
+
+        private Thread? simulationThread;
+
         public WorldStats WorldStats
         { 
             get => _worldStats;
@@ -25,7 +29,7 @@ namespace DarwinSimulator
         }
         
         private int day = 0;
-        private bool isRunning = false;
+        private bool isRunning = true;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -36,25 +40,36 @@ namespace DarwinSimulator
 
         public void Run()
         {
-            while (!isRunning)
+            simulationThread = new Thread(() =>
             {
-                WorldMap.PassDay(day);
-                day++;
-                WorldStats = WorldMap.WorldStats;
-                try
+                while (isRunning)
                 {
-                    Thread.Sleep(1000);
+                    WorldMap.PassDay(day);
+                    day++;
+                    WorldStats = WorldMap.WorldStats;
+                    try
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
+            });
+
+            simulationThread.IsBackground = true;
+            simulationThread.Start();
         }
 
         public void SwitchRunningState()
         {
             isRunning = !isRunning;
+
+            if (isRunning && (simulationThread == null || !simulationThread.IsAlive))
+            {
+                Run(); // Restart simulation if it's stopped
+            }
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

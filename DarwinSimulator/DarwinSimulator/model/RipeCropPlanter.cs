@@ -38,7 +38,10 @@ namespace DarwinSimulator.model
 
                     BigPlant plant = new BigPlant(randomPosition);
                     foreach(var position in plant.CoveredPositions)
-                        plants.TryAdd(position, plant);
+                        if(worldMap.CanPlant(position))
+                            plants.Add(position, plant);
+
+                    actuallyPlanted++;
                 }
                 else
                 {
