@@ -92,7 +92,7 @@ namespace DarwinSimulator.model
         {
             Energy -= energyAmount;
 
-            if (Energy < 0)
+            if (Energy <= 0)
                 Die();
         }
 

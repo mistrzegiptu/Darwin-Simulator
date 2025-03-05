@@ -20,7 +20,7 @@
             <TextBlock Text="{Binding WorldStats.AverageEnergy, StringFormat='Avg Energy: {0}'}"/>
             <TextBlock Text="{Binding WorldStats.AverageLifetime, StringFormat='Avg Lifetime: {0}'}"/>
             <TextBlock Text="{Binding WorldStats.AverageChildCount, StringFormat='Avg Child Count: {0}'}"/>
-            <Button Content="Pause/Resume" Command="{Binding}"/>
+            <Button Content="Pause/Resume" Command="{Binding SwitchSimulationStateCommand}"/>
         </StackPanel>
         <Grid x:Name="SimulationGrid" Grid.Column="1" Background="LightGray" Margin="10"/>
     </Grid>

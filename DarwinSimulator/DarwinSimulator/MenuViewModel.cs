@@ -55,8 +55,9 @@ namespace DarwinSimulator
                 simulationWindow.Show();
 
                 //Task task = Task.Run(() => simulation.Run());
-                Thread thread = new Thread(() => simulation.Run());
-                thread.Start();
+                //Thread thread = new Thread(() => simulation.Run());
+                simulation.Run();
+                //thread.Start();
             }
             catch (Exception ex)
             {

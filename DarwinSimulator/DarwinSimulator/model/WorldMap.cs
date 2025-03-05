@@ -61,15 +61,19 @@ namespace DarwinSimulator.model
             {
                 deadAnimals.AddRange(animalsOnField.Where(x => x.IsAlive == false));
 
+                List<Animal> animalsToRemove = new();
+
                 foreach (var animal in animalsOnField)
                 {
-                    if(!animal.IsAlive)
+                    if (!animal.IsAlive)
                     {
-                        animal.SetDeathDay(day-1);
-                        RemoveAnimal(animal);
+                        animal.SetDeathDay(day - 1);
+                        animalsToRemove.Add(animal);
                         AnimalDied?.Invoke(animal.Position);
                     }
                 }
+
+                animalsToRemove.ForEach(RemoveAnimal);
             }
         }
 
