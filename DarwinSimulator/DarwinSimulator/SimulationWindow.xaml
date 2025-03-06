@@ -22,6 +22,18 @@
             <TextBlock Text="{Binding WorldStats.AverageChildCount, StringFormat='Avg Child Count: {0}'}"/>
             <Button Content="Pause/Resume" Command="{Binding SwitchSimulationStateCommand}"/>
         </StackPanel>
-        <Grid x:Name="SimulationGrid" Grid.Column="1" Background="LightGray" Margin="10"/>
+
+        <ItemsControl Grid.Column="1" ItemsSource="{Binding GridCells}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding Path=Height}" Columns="{Binding Path=Width}"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{Binding Color}" Width="20" Height="20" BorderBrush="Black" BorderThickness="0.5"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>

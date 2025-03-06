@@ -81,10 +81,9 @@ namespace DarwinSimulator.model
         {
             foreach (var animalsOnField in animals.Values)
             {
-                foreach (var animal in animalsOnField)
-                {
-                    animal.Move(this);
-                }
+                List<Animal> animalsToMove = new();
+                animalsToMove.AddRange(animalsToMove);
+                animalsToMove.ForEach(x => { RemoveAnimal(x); x.Move(this); PlaceAnimal(x); }); //TODO: FIX MOVING
             }
         }
 
@@ -206,7 +205,7 @@ namespace DarwinSimulator.model
             return xLen * yLen - livingAnimals - plantsCount;
         }
 
-        protected virtual String GetMostPopularGenome()
+        protected String GetMostPopularGenome()
         {
             Dictionary<String, int> genomes = new Dictionary<String, int>();
 
@@ -224,17 +223,17 @@ namespace DarwinSimulator.model
             return genomes.OrderByDescending(x => x.Value).FirstOrDefault().Key;
         }
 
-        protected virtual double GetAverageEnergy()
+        protected double GetAverageEnergy()
         {
             return animals.Values.SelectMany(x => x).Select(x => x.Energy).DefaultIfEmpty(0).Average();
         }
 
-        protected virtual double GetAveragaLifetime()
+        protected double GetAveragaLifetime()
         {
             return deadAnimals.Select(x => x.Age).DefaultIfEmpty(0).Average();
         }
 
-        protected virtual double GetAverageChildCount()
+        protected double GetAverageChildCount()
         {
             return animals.Values.SelectMany(x => x).Select(x => x.ChildCount).DefaultIfEmpty(0).Average();
         }
