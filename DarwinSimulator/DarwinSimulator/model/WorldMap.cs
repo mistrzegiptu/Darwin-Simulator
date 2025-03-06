@@ -79,12 +79,13 @@ namespace DarwinSimulator.model
 
         public virtual void MoveAnimals()
         {
+            List<Animal> animalsToMove = new();
+
             foreach (var animalsOnField in animals.Values)
-            {
-                List<Animal> animalsToMove = new();
-                animalsToMove.AddRange(animalsToMove);
-                animalsToMove.ForEach(x => { RemoveAnimal(x); x.Move(this); PlaceAnimal(x); }); //TODO: FIX MOVING
+            {    
+                animalsToMove.AddRange(animalsOnField);
             }
+            animalsToMove.ForEach(x => { RemoveAnimal(x); x.Move(this); PlaceAnimal(x); }); //TODO: FIX MOVING
         }
 
         public void EatPlants()
