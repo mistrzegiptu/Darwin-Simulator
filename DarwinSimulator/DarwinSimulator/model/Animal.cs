@@ -72,7 +72,7 @@ namespace DarwinSimulator.model
             Vector2d unitVector = direction.ToUnitVector();
 
             if (moveValidator.CanMoveTo(Position.Add(unitVector)))
-                Position.Add(unitVector);
+                Position = Position.Add(unitVector);
             else
                 direction = direction.Reverse();
 
