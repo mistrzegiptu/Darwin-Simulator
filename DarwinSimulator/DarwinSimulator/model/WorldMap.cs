@@ -39,7 +39,7 @@ namespace DarwinSimulator.model
             planter = PlanterFactory.CreatePlanter(parameters, this);
 
             Vector2d lowerLeft = new Vector2d(0, 0);
-            Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width, parameters.WorldParameters.Height);
+            Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width - 1, parameters.WorldParameters.Height - 1);
             Boundary = new Boundary(lowerLeft, upperRight);
 
             SpawnNewPlants(parameters.WorldParameters.StartingPlantCount);
@@ -126,6 +126,7 @@ namespace DarwinSimulator.model
                     if(animalsOnField[i].TryReproduce(animalsOnField[i + 1], out child))
                     {
                         PlaceAnimal(child!);
+                        _animalsCount++;
                     }
                 }
             }
@@ -146,6 +147,7 @@ namespace DarwinSimulator.model
                 Vector2d randPosition = new Vector2d(randX, randY);
 
                 PlaceAnimal(AnimalFactory.CreateAnimal(randPosition, parameters));
+                _animalsCount++;
             }
         }
 
@@ -157,8 +159,6 @@ namespace DarwinSimulator.model
                 animals.Add(position, new List<Animal> {animal});
             else
                 animals[position].Add(animal);
-
-            _animalsCount++;
         }
 
         private void RemoveAnimal(Animal animal)

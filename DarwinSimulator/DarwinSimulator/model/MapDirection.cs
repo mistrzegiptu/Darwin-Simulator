@@ -33,7 +33,7 @@ namespace DarwinSimulator.model
         public static MapDirection Rotate(this MapDirection direction, int rotations)
         {
             int length = GetLength();
-            int newValue = ((int)direction + length) % length;
+            int newValue = ((int)direction + rotations) % length;
 
             if (newValue < 0)
                 newValue += length;
