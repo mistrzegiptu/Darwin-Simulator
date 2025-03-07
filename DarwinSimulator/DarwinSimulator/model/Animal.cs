@@ -74,7 +74,11 @@ namespace DarwinSimulator.model
             if (moveValidator.CanMoveTo(Position.Add(unitVector)))
                 Position = Position.Add(unitVector);
             else
+            {
                 direction = direction.Reverse();
+                unitVector = direction.ToUnitVector();
+                Position = Position.Add(unitVector);
+            }
 
             Position = moveValidator.ChangeOnBound(Position);
 

@@ -72,6 +72,11 @@ namespace DarwinSimulator
             }
         }
 
+        public void StopSimulation()
+        {
+            isRunning = false;
+        }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

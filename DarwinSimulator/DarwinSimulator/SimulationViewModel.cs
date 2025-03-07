@@ -55,9 +55,9 @@ namespace DarwinSimulator
         {
             GridCells.Clear();
 
-            for(int x = 0; x < width; x++)
+            for(int y = 0; y < height; y++)
             {
-                for (int y = 0; y < height; y++)
+                for (int x = 0; x < width; x++)
                 {
                     GridCells.Add(new GridCellViewModel(new Vector2d(x, y)));
                 }
