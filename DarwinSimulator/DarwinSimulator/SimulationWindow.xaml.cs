@@ -20,7 +20,7 @@ namespace DarwinSimulator
     /// </summary>
     public partial class SimulationWindow : Window
     {
-        internal SimulationWindow(int width, int height, Simulation simulation)
+        public SimulationWindow(int width, int height, Simulation simulation)
         {
             InitializeComponent();
             DataContext = new SimulationViewModel(width, height, simulation);

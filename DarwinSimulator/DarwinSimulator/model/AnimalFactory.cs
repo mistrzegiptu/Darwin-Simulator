@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class AnimalFactory
+    public class AnimalFactory
     {
         public static Animal CreateAnimal(Vector2d startingPosition, Parameters parameters)
         {

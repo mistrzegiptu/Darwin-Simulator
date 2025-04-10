@@ -7,11 +7,11 @@ using System.Windows.Media;
 
 namespace DarwinSimulator.model
 {
-    internal enum MapDirection
+    public enum MapDirection
     {
         NORTH, NORTH_EAST, EAST, SOUTH_EAST, SOUTH, SOUTH_WEST, WEST, NORTH_WEST
     }
-    internal static class MapDirectionExtension
+    public static class MapDirectionExtension
     {
         public static int GetLength() => Enum.GetValues(typeof(MapDirection)).Length;
         public static Vector2d ToUnitVector(this MapDirection direction)

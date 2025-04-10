@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class Vector2d
+    public struct Vector2d
     {
         public int X { get; }
         public int Y { get; }
@@ -50,16 +50,6 @@ namespace DarwinSimulator.model
         public Vector2d Opposite()
         {
             return new Vector2d(-X, -Y);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            var other = obj as Vector2d;
-
-            if(other == null)
-                return false;
-
-            return X == other.X && Y == other.Y;
         }
 
         public override int GetHashCode()

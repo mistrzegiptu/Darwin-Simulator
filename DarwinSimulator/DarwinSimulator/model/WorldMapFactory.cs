@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class WorldMapFactory
+    public class WorldMapFactory
     {
         public static WorldMap CreateWorld(Parameters parameters)
         {

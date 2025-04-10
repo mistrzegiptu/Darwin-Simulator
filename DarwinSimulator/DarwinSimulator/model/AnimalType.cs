@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal enum AnimalType
+    public enum AnimalType
     {
         NORMAL_ANIMAL, AGEING_ANIMAL, CRAZY_ANIMAL
     }

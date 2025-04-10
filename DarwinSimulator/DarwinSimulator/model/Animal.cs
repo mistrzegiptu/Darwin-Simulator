@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal abstract class Animal : IWorldElement
+    public abstract class Animal : IWorldElement
     {
         protected readonly Parameters parameters;
         protected static readonly Random rand = new Random();
@@ -45,7 +45,7 @@ namespace DarwinSimulator.model
             this.parameters = parameters;
         }
 
-        public bool TryReproduce(Animal secondParent, out Animal? child)
+        public bool TryReproduce(Animal secondParent, out Animal child)
         {
             Animal firstParent = this;
             child = null;
@@ -55,7 +55,7 @@ namespace DarwinSimulator.model
 
             Genome childGenome = GenomeFactory.CreateGenome(firstParent.Genome, secondParent.Genome, firstParent.Energy, secondParent.Energy, parameters);
 
-            child = AnimalFactory.CreateAnimal(childGenome, Position, parameters.AnimalParameters.MinEnergyForReproducing * 2, parameters);
+            child = AnimalFactory.CreateAnimal(childGenome, Position, parameters.AnimalParameters.EnergyUsedForReproducing * 2, parameters);
 
             firstParent.LoseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);
             secondParent.LoseEnergy(parameters.AnimalParameters.EnergyUsedForReproducing);

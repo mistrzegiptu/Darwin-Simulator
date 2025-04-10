@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class BigPlant : IWorldElement
+    public class BigPlant : IWorldElement
     {
         public int EnergyMultiplier { get; } = 2;
         public Vector2d Position { get; }

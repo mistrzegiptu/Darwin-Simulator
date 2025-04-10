@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal interface IWorldElement
+    public interface IWorldElement
     {
         Vector2d Position { get; }
         string ToString();

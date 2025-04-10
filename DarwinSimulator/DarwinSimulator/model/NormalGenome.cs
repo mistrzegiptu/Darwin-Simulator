@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class NormalGenome : Genome
+    public class NormalGenome : Genome
     {
         public NormalGenome(Parameters parameters) : base(parameters)
         { 

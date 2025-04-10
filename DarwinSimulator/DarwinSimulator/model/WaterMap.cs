@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class WaterMap : WorldMap
+    public class WaterMap : WorldMap
     {
         public WaterMap(Parameters parameters) : base(parameters)
         {

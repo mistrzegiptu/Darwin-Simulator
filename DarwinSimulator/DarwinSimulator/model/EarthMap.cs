@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class EarthMap : WorldMap
+    public class EarthMap : WorldMap
     {
         public EarthMap(Parameters parameters) : base(parameters)
         {

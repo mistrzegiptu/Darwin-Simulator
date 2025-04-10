@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class FireMap : WorldMap
+    public class FireMap : WorldMap
     {
         private Dictionary<Vector2d, IWorldElement> _fires = new();
 

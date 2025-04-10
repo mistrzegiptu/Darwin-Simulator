@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal abstract class Genome
+    public abstract class Genome
     {
         protected readonly Parameters parameters;
         protected readonly Random rand = new Random();

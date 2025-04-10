@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class CrazyAnimal : Animal
+    public class CrazyAnimal : Animal
     {
         public CrazyAnimal(Vector2d startingPosition, Parameters parameters) : base(startingPosition, parameters)
         {

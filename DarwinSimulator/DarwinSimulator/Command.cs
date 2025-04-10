@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DarwinSimulator
 {
-    internal class Command : ICommand
+    public class Command : ICommand
     {
         private readonly Action _command;
         private readonly Func<bool>? _canExecute;

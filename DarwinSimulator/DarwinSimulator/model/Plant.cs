@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class Plant : IWorldElement
+    public class Plant : IWorldElement
     {
         public Vector2d Position { get; }
         public Plant(Vector2d position) 

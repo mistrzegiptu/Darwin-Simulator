@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace DarwinSimulator
 {
-    internal class MenuViewModel
+    public class MenuViewModel
     {
         public int WorldWidth { get; set; } = 10;
         public int WorldHeight { get; set; } = 10;

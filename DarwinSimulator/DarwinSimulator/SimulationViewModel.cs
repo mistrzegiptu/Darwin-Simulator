@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace DarwinSimulator
 {
-    internal class SimulationViewModel : INotifyPropertyChanged
+    public class SimulationViewModel : INotifyPropertyChanged
     {
         public ICommand SwitchSimulationStateCommand { get; }
         private readonly Simulation _simulation;
