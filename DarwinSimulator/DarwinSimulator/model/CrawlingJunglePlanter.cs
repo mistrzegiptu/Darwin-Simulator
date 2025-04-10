@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class CrawlingJunglePlanter : Planter
+    public class CrawlingJunglePlanter : Planter
     {
         public CrawlingJunglePlanter(WorldMap worldMap) : base(worldMap)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class GenomeFactory
+    public class GenomeFactory
     {
         public static Genome CreateGenome(Parameters parameters)
         {

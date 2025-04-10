@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class WildOwlBearMap : WorldMap
+    public class WildOwlBearMap : WorldMap
     {
         public WildOwlBearMap(Parameters parameters) : base(parameters)
         {

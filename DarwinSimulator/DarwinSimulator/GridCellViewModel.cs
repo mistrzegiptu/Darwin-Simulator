@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace DarwinSimulator
 {
-    internal class GridCellViewModel : INotifyPropertyChanged
+    public class GridCellViewModel : INotifyPropertyChanged
     {
         public Vector2d Position { get; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal abstract class Planter : IPlanter
+    public abstract class Planter : IPlanter
     {
         protected readonly Random rand = new Random();
         protected WorldMap worldMap;

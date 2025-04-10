@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class CorpsePlanter : Planter
+    public class CorpsePlanter : Planter
     {
         List<Vector2d> corpses = new();
         public CorpsePlanter(WorldMap worldMap) : base(worldMap)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal interface IWorldMap
+    public interface IWorldMap
     {
         WorldStats WorldStats { get; }
 

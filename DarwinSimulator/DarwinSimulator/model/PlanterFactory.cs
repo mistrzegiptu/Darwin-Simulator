@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class PlanterFactory
+    public class PlanterFactory
     {
         public static IPlanter CreatePlanter(Parameters parameters, WorldMap worldMap)
         {

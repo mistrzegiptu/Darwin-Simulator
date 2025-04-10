@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class RipeCropPlanter : Planter
+    public class RipeCropPlanter : Planter
     {
         private readonly Boundary ripeCropSquare;
         public RipeCropPlanter(WorldMap worldMap) : base(worldMap)

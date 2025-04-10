@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model.records
 {
-    internal record Boundary(Vector2d LowerLeft, Vector2d UpperRight);
+    public record Boundary(Vector2d LowerLeft, Vector2d UpperRight);
 }

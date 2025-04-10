@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal interface IPlanter
+    public interface IPlanter
     {
         int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount);
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class Fire : IWorldElement
+    public class Fire : IWorldElement
     {
         public Vector2d Position { get; }
         public int DaysActive { get; private set; }

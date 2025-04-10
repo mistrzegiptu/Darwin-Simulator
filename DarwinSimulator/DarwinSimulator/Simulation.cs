@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace DarwinSimulator
 {
-    internal class Simulation : INotifyPropertyChanged
+    public class Simulation : INotifyPropertyChanged
     {
         public WorldMap WorldMap { get; }
         private WorldStats _worldStats;
@@ -68,7 +68,7 @@ namespace DarwinSimulator
 
             if (isRunning && (simulationThread == null || !simulationThread.IsAlive))
             {
-                Run(); // Restart simulation if it's stopped
+                Run();
             }
         }
 

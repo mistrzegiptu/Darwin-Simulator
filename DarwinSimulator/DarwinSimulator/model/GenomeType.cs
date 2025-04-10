@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal enum GenomeType
+    public enum GenomeType
     {
         NORMAL_GENOME, SLIGHTLY_ADJUSTING_GENOME, SWAPPING_GENOME
     }

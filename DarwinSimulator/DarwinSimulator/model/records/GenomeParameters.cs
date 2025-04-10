@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model.records
 {
-    internal record GenomeParameters(int MinMutationCount, int MaxMutationCount, GenomeType GenomeType,
+    public record GenomeParameters(int MinMutationCount, int MaxMutationCount, GenomeType GenomeType,
                                      int GenomeLength);
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class PoleMap : WorldMap
+    public class PoleMap : WorldMap
     {
         private Boundary topPole, bottomPole;
         public PoleMap(Parameters parameters) : base(parameters)

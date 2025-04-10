@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal abstract class WorldMap : IWorldMap, IMoveValidator
+    public abstract class WorldMap : IWorldMap, IMoveValidator
     {
         protected readonly Random rand = new Random();
         protected readonly Parameters parameters;
@@ -19,6 +19,14 @@ namespace DarwinSimulator.model
         protected readonly Dictionary<Vector2d, List<Animal>> animals = new();
         protected readonly Dictionary<Vector2d, IWorldElement> plants = new();
 
+        public Dictionary<Vector2d, List<Animal>> Animals
+        {
+            get => animals;
+        }
+        public List<Animal> DeadAnimals
+        {
+            get => deadAnimals;
+        }
         public WorldStats WorldStats
         {
             get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopularGenome(), GetAverageEnergy(), GetAveragaLifetime(), GetAverageChildCount());

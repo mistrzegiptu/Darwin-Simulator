@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class AgeingAnimal : Animal
+    public class AgeingAnimal : Animal
     {
         private readonly int _seniorAge = 60;
         public AgeingAnimal(Vector2d startingPosition, Parameters parameters) : base(startingPosition, parameters)

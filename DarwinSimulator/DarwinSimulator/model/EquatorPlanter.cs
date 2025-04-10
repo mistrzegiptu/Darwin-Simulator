@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    internal class EquatorPlanter : Planter
+    public class EquatorPlanter : Planter
     {
         public EquatorPlanter(WorldMap worldMap) : base(worldMap)
         {

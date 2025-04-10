@@ -8,7 +8,7 @@ using DarwinSimulator.model.records;
 
 namespace DarwinSimulator.model
 {
-    internal class Parameters
+    public class Parameters
     {
         public AnimalParameters AnimalParameters { get; }
         public GenomeParameters GenomeParameters { get; }
