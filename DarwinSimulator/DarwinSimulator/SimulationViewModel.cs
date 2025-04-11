@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DarwinSimulator
@@ -66,11 +67,20 @@ namespace DarwinSimulator
 
         private void UpdateGrid()
         {
-            foreach(var cell in GridCells)
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                foreach (var cell in GridCells)
+                {
+                    var element = _simulation.WorldMap.ObjectAt(cell.Position);
+                    cell.Update(element);
+                }
+            });
+
+            /*foreach(var cell in GridCells)
             {
                 var element = _simulation.WorldMap.ObjectAt(cell.Position);
                 cell.Update(element);
-            }
+            }*/
         }
 
         private void SwitchSimulationState()

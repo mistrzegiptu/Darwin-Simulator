@@ -57,6 +57,16 @@ namespace DarwinSimulator.model
             return HashCode.Combine(X, Y);
         }
 
+        public static bool operator ==(Vector2d left, Vector2d right)
+        {
+            return left.X == right.X && left.Y == right.Y;
+        }
+
+        public static bool operator !=(Vector2d left, Vector2d right)
+        {
+            return !(left == right);
+        }
+
         public override string ToString()
         {
             return $"({X}, {Y})";

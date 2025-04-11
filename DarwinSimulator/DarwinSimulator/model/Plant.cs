@@ -18,5 +18,10 @@ namespace DarwinSimulator.model
         {
             return "P";
         }
+
+        public string GetImageFileName()
+        {
+            return "plant.png";
+        }
     }
 }

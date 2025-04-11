@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace DarwinSimulator.model
 
         public void CreateFire()
         {
-            Vector2d newFirePosition = plants.Keys.First();
+            Vector2d newFirePosition = plants.Keys.FirstOrDefault();
 
             _fires.Add(newFirePosition, new Fire(newFirePosition));
             plants.Remove(newFirePosition);
@@ -32,10 +33,13 @@ namespace DarwinSimulator.model
 
         public void SpreadOrExtinguish()
         {
-            foreach(Fire fire in _fires.Values)
+            List<IWorldElement> extinguishedFires = new();
+            List<IWorldElement> spreadingFires = new();
+
+            foreach (Fire fire in _fires.Values)
             {
                 if (fire.DaysActive == parameters.WorldParameters.FireDuration)
-                    _fires.Remove(fire.Position);
+                    extinguishedFires.Add(fire);
                 else
                 {
                     fire.AddActiveDay();
@@ -48,12 +52,15 @@ namespace DarwinSimulator.model
                         Vector2d spreadingPosition = fire.Position.Add(direction.ToUnitVector());
                         if (plants.ContainsKey(spreadingPosition))
                         {
-                            _fires.Add(spreadingPosition, new Fire(spreadingPosition));
+                            spreadingFires.Add(new Fire(spreadingPosition));
                             plants.Remove(spreadingPosition);
                         }
                     }
                 }
             }
+
+            extinguishedFires.ForEach(x => _fires.Remove(x.Position));
+            spreadingFires.ForEach(x => _fires.Add(x.Position, x));
         }
 
         public override IWorldElement? ObjectAt(Vector2d position)

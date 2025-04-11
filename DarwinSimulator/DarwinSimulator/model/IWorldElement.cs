@@ -9,6 +9,6 @@ namespace DarwinSimulator.model
     public interface IWorldElement
     {
         Vector2d Position { get; }
-        string ToString();
+        string GetImageFileName();
     }
 }
