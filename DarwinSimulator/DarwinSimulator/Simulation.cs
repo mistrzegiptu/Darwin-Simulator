@@ -8,6 +8,7 @@ using DarwinSimulator.model;
 using System.ComponentModel;
 using DarwinSimulator.model.records;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace DarwinSimulator
 {

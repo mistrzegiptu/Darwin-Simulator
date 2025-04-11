@@ -31,7 +31,9 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="{Binding Color}" Width="20" Height="20" BorderBrush="Black" BorderThickness="0.5"/>
+                    <Border BorderBrush="Black" BorderThickness="0.5">
+                        <Image Source="{Binding Image}" Width="32" Height="32"></Image>
+                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
