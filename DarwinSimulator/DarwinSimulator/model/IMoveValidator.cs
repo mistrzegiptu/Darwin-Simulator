@@ -8,7 +8,7 @@ namespace DarwinSimulator.model
 {
     public interface IMoveValidator
     {
-        bool CanMoveTo(Vector2d position);
-        Vector2d ChangeOnBound(Vector2d position);
+        bool CanMoveTo(Vector2d position, ICreature callerCreature);
+        Vector2d ChangeOnBound(Vector2d position, ICreature callerCreature);
     }
 }
