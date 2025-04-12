@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
-    public abstract class Animal : IWorldElement
+    public abstract class Animal : ICreature
     {
         protected readonly Parameters parameters;
         protected static readonly Random rand = new Random();
@@ -71,7 +71,7 @@ namespace DarwinSimulator.model
             direction = direction.Rotate(Genome.GetNext());
             Vector2d unitVector = direction.ToUnitVector();
 
-            if (moveValidator.CanMoveTo(Position.Add(unitVector)))
+            if (moveValidator.CanMoveTo(Position.Add(unitVector), this))
                 Position = Position.Add(unitVector);
             else
             {
@@ -80,7 +80,7 @@ namespace DarwinSimulator.model
                 Position = Position.Add(unitVector);
             }
 
-            Position = moveValidator.ChangeOnBound(Position);
+            Position = moveValidator.ChangeOnBound(Position, this);
 
             LoseEnergy(energyLoss);
             Age++;

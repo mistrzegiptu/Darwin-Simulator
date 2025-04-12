@@ -12,6 +12,7 @@
     <None Remove="resources\animal.png" />
     <None Remove="resources\empty.png" />
     <None Remove="resources\fire.png" />
+    <None Remove="resources\owlbear.png" />
     <None Remove="resources\plant.png" />
     <None Remove="resources\water.png" />
   </ItemGroup>
@@ -20,6 +21,7 @@
     <Resource Include="resources\animal.png" />
     <Resource Include="resources\empty.png" />
     <Resource Include="resources\fire.png" />
+    <Resource Include="resources\owlbear.png" />
     <Resource Include="resources\plant.png" />
     <Resource Include="resources\water.png" />
   </ItemGroup>

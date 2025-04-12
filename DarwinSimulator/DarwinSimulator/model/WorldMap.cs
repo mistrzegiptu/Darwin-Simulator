@@ -1,10 +1,4 @@
 ﻿using DarwinSimulator.model.records;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DarwinSimulator.model
 {
@@ -29,7 +23,7 @@ namespace DarwinSimulator.model
         }
         public WorldStats WorldStats
         {
-            get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopularGenome(), GetAverageEnergy(), GetAveragaLifetime(), GetAverageChildCount());
+            get => new WorldStats(_animalsCount, _plantsCount, GetFreeFieldsCount(), GetMostPopularGenome(), GetAverageEnergy(), GetAverageLifetime(), GetAverageChildCount());
         }
 
         private int _animalsCount = 0;
@@ -93,7 +87,7 @@ namespace DarwinSimulator.model
             {    
                 animalsToMove.AddRange(animalsOnField);
             }
-            animalsToMove.ForEach(x => { RemoveAnimal(x); x.Move(this); PlaceAnimal(x); }); //TODO: FIX MOVING
+            animalsToMove.ForEach(x => { RemoveAnimal(x); x.Move(this); PlaceAnimal(x); });
         }
 
         public void EatPlants()
@@ -179,12 +173,12 @@ namespace DarwinSimulator.model
                 animals.Remove(position);
         }
 
-        public bool CanMoveTo(Vector2d position)
+        public virtual bool CanMoveTo(Vector2d position, ICreature callerCreature)
         {
             return position.Y <= Boundary.UpperRight.Y && position.Y >= Boundary.LowerLeft.Y;
         }
 
-        public Vector2d ChangeOnBound(Vector2d position)
+        public virtual Vector2d ChangeOnBound(Vector2d position, ICreature callerCreature)
         {
             if (position.X == Boundary.LowerLeft.X - 1)
                 return new Vector2d(Boundary.UpperRight.X, position.Y);
@@ -237,7 +231,7 @@ namespace DarwinSimulator.model
             return animals.Values.SelectMany(x => x).Select(x => x.Energy).DefaultIfEmpty(0).Average();
         }
 
-        protected double GetAveragaLifetime()
+        protected double GetAverageLifetime()
         {
             return deadAnimals.Select(x => x.Age).DefaultIfEmpty(0).Average();
         }
