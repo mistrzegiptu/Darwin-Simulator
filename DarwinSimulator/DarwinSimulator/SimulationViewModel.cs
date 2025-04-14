@@ -75,12 +75,6 @@ namespace DarwinSimulator
                     cell.Update(element);
                 }
             });
-
-            /*foreach(var cell in GridCells)
-            {
-                var element = _simulation.WorldMap.ObjectAt(cell.Position);
-                cell.Update(element);
-            }*/
         }
 
         private void SwitchSimulationState()

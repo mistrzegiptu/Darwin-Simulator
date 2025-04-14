@@ -38,11 +38,11 @@ namespace DarwinSimulator.model
         {
             this.parameters = parameters;
 
-            planter = PlanterFactory.CreatePlanter(parameters, this);
-
             Vector2d lowerLeft = new Vector2d(0, 0);
             Vector2d upperRight = new Vector2d(parameters.WorldParameters.Width - 1, parameters.WorldParameters.Height - 1);
             Boundary = new Boundary(lowerLeft, upperRight);
+
+            planter = PlanterFactory.CreatePlanter(parameters, this);
 
             SpawnNewPlants(parameters.WorldParameters.StartingPlantCount);
             SpawnAnimalsAtStart(parameters.WorldParameters.StartingAnimalCount);

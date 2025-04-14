@@ -5,7 +5,7 @@ namespace DarwinSimulator.model
     public class WildOwlBearMap : WorldMap
     {
         private readonly Boundary _owlBearBoundary;
-        private readonly OwlBear _owlBear;
+        private OwlBear _owlBear;
         public WildOwlBearMap(Parameters parameters) : base(parameters)
         {
             int squareSize = Math.Min(((Boundary.UpperRight.X - Boundary.LowerLeft.X) / 5), ((Boundary.UpperRight.Y - Boundary.LowerLeft.Y) / 5));

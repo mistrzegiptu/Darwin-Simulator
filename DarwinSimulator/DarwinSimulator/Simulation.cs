@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using DarwinSimulator.model;
-using System.ComponentModel;
+﻿using DarwinSimulator.model;
 using DarwinSimulator.model.records;
-using System.Runtime.CompilerServices;
-using System.Windows;
+using System.ComponentModel;
 
 namespace DarwinSimulator
 {

@@ -17,8 +17,8 @@ namespace DarwinSimulator.model
         public override int SpawnNewPlants(Dictionary<Vector2d, IWorldElement> plants, int plantCount)
         {
             Boundary boundary = worldMap.Boundary;
-            int midX = (boundary.UpperRight.X - boundary.LowerLeft.X) / 2;
-            int equatorDeltaX = (boundary.UpperRight.X - boundary.LowerLeft.X) / 10;
+            int midY = (boundary.UpperRight.Y - boundary.LowerLeft.Y) / 2;
+            int equatorDeltaY = (boundary.UpperRight.Y - boundary.LowerLeft.Y) / 10;
             int actuallyPlanted = 0;
 
             for(int i = 0; i < plantCount; i++)
@@ -27,14 +27,14 @@ namespace DarwinSimulator.model
                 Vector2d positionToSpawn;
                 if (position < 80)
                 {
-                    positionToSpawn = new Vector2d(rand.Next(midX - equatorDeltaX, midX + equatorDeltaX), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
+                    positionToSpawn = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(midY - equatorDeltaY, midY + equatorDeltaY));
                 }
                 else
                 {
-                    if (rand.Next(1) == 0)
-                        positionToSpawn = new Vector2d(rand.Next(boundary.LowerLeft.X, midX - equatorDeltaX), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
+                    if (rand.Next(2) == 0)
+                        positionToSpawn = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, midY - equatorDeltaY));
                     else
-                        positionToSpawn = new Vector2d(rand.Next(midX + equatorDeltaX, boundary.UpperRight.X), rand.Next(boundary.LowerLeft.Y, boundary.UpperRight.Y));
+                        positionToSpawn = new Vector2d(rand.Next(boundary.LowerLeft.X, boundary.UpperRight.X), rand.Next(midY + equatorDeltaY, boundary.UpperRight.Y));
                 }
 
                 if(worldMap.CanPlant(positionToSpawn))
