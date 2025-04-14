@@ -18,7 +18,7 @@ namespace DarwinSimulator.model
         {
             int actuallyPlanted = 0;
 
-            for(int i = 0; i < plants.Count; i++)
+            for(int i = 0; i < plantCount; i++)
             {
                 if(plants.Keys.Count > 0 && rand.Next(100) < 80)
                 {
