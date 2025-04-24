@@ -8,7 +8,7 @@ Built in **C# with WPF**, the project features a graphical interface for configu
 ---
 
 ## Key Features  
-- **Dynamic Map**: Grid-based world with steppes (sparse plants) and jungles (dense plants).
+- **Dynamic Map**: Grid-based world with steppes (sparse plants) and jungles (dense plants).  
 - **Animal Behavior**:  
   - Genes determine movement (8 possible directions).  
   - Energy decreases daily; eating plants restores energy.  
@@ -20,16 +20,16 @@ Built in **C# with WPF**, the project features a graphical interface for configu
 ---
 
 ## Simulation Workflow  
-1. **Daily Cycle**:
+1. **Daily Cycle**:  
    - Remove dead animals.  
    - Move animals based on their genes.  
    - Resolve plant consumption.  
    - Trigger reproduction for high-energy pairs.  
    - Grow new plants.  
 2. **Environmental Variants**:  
-   - *Globe* (wrapping edges), *Poles* (energy loss near edges), *Fires* (spreading hazards), *Water* (cycling tides), *Wild Owl Bear* (dangerous predator).  
+   - *Globe* (wrapping edges), *Poles* (energy loss near edges), *Fires* (spreading hazards).  
 3. **Mutation Types**:  
-   - Random changes, slight adjustments (`Â±1`), or gene swaps.  
+   - Random changes, slight adjustments (`±1`), or gene swaps.  
 
 ---
 
@@ -51,6 +51,20 @@ Built in **C# with WPF**, the project features a graphical interface for configu
   - Pause/resume controls.  
   - Animal tracking (genome, energy, offspring).  
   - CSV export for stats.  
+
+---
+
+## How to Run  
+1. Clone the repository.  
+2. Build with Gradle: `gradlew build`  
+3. Launch: `DarwinWorld.exe`  
+4. Configure settings and start simulating!  
+
+---
+
+## Implemented Variants  
+- **Map**: [Your variant, e.g., *Poles* or *Fires*]  
+- **Animals**: [Your variant, e.g., *A Bit of Madness*]  
 
 ---
 

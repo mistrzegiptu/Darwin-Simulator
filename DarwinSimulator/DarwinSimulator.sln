@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarwinSimulator", "DarwinSimulator\DarwinSimulator.csproj", "{FE14DF5B-646A-42DD-9F9C-4B4C2D914A5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarwinSimulatorTest", "DarwinSimulatorTest\DarwinSimulatorTest.csproj", "{AFEA3D56-574B-4AAB-AE41-C8862185F8C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarwinSimulatorTest", "DarwinSimulatorTest\DarwinSimulatorTest.csproj", "{AFEA3D56-574B-4AAB-AE41-C8862185F8C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

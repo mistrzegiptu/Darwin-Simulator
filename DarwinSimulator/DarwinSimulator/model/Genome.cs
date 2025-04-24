@@ -64,8 +64,10 @@ namespace DarwinSimulator.model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            genes.Select(x => sb.Append(x));
-            
+            foreach (var gene in genes)
+            {
+                sb.Append(gene);
+            }
             return sb.ToString();
         }
     }
