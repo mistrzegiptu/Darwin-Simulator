@@ -228,17 +228,17 @@ namespace DarwinSimulator.model
 
         protected double GetAverageEnergy()
         {
-            return animals.Values.SelectMany(x => x).Select(x => x.Energy).DefaultIfEmpty(0).Average();
+            return Math.Round(animals.Values.SelectMany(x => x).Select(x => x.Energy).DefaultIfEmpty(0).Average(), 2);
         }
 
         protected double GetAverageLifetime()
         {
-            return deadAnimals.Select(x => x.Age).DefaultIfEmpty(0).Average();
+            return Math.Round(deadAnimals.Select(x => x.Age).DefaultIfEmpty(0).Average(), 2);
         }
 
         protected double GetAverageChildCount()
         {
-            return animals.Values.SelectMany(x => x).Select(x => x.ChildCount).DefaultIfEmpty(0).Average();
+            return Math.Round(animals.Values.SelectMany(x => x).Select(x => x.ChildCount).DefaultIfEmpty(0).Average(), 2);
         }
 
         public bool CanPlant(Vector2d position)
